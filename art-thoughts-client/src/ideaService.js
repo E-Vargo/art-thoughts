@@ -4,14 +4,13 @@ class IdeaService {
         this.endpoint = "http://localhost:3000/ideas"
     }
 
-     getIdeas(){
+    getIdeas(){
         return fetch(this.endpoint)
-        .then(resp => resp.json())
-        .then(ideas => {
-            
-                ideas.data.array.forEach(element => {
-                    const newIdea = new Idea(element, element.attributes)
-                })
-            }
+        .then(function(response){
+            return response.json
+        }).then(function(json) {
+                console.log(json)
+                console.log(`holy cow`)
+        })
     }
 }
