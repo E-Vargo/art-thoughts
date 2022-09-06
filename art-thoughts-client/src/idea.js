@@ -2,9 +2,9 @@ class Idea {
 
     static all = []
 
-    const ideasTest = document.getElementById('ideas-container')
+    
 
-    constructor({id, title, date, category, thoughts}){
+    constructor(id, title, date, category, thoughts){
         this.id = id
         this.title = title 
         this.date = date 
@@ -13,6 +13,14 @@ class Idea {
         Idea.all.push(this)
     }
 
-    
+    renderIdea(){
+        let ideaDiv = document.getElementById("ideas-container")
+
+        ideaDiv.innerHTML +=
+        `
+        <h1>${this.title}</h1
+        <p>${this.date}</p>
+        `
+    }
 
 }
