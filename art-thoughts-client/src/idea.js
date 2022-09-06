@@ -2,8 +2,6 @@ class Idea {
 
     static all = []
 
-    
-
     constructor(id, title, date, category, thoughts){
         this.id = id
         this.title = title 
@@ -20,6 +18,9 @@ class Idea {
         `
         <h1>${this.title}</h1
         <p>${this.date}</p>
+        <p>${this.category}</p>
+        <p>${this.thoughts}</p>
+        <button class="delete-button" data-id=${this.id} onclick="deleteIdea()">Delete Idea</button>
         `
     }
 
