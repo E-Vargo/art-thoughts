@@ -1,11 +1,17 @@
 //global---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
+ eventListeners();
+})
+
+function ideasPage(){
     createIdeaForm();
     fetchIdeas();
+}
+
+function contributionsPage(){
     fetchContributions();
     createContributionForm();
-
-})
+}
 
 const BASE_URL = "http://localhost:3000"
 
@@ -98,9 +104,14 @@ function deleteIdea(){
     this.location.reload()
 }
 
+function hideIdeas(){
+    
+    let ideaDiv = document.getElementById("ideas-container")
+    let ideaForm = document.getElementById("idea-form")
 
-
-
+    ideaDiv.innerHTML = ``
+    ideaForm.innerHTML = ``
+}
 
 //contribution------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function fetchContributions(){
@@ -117,7 +128,7 @@ function fetchContributions(){
 
 function createContributionForm(){
     let contributionForm = document.getElementById("contribution-form")
-    
+
     contributionForm.innerHTML += 
     `
     <form>
@@ -192,7 +203,16 @@ function deleteContribution(){
 //eventListeners
 
 function eventListeners(){
+   let see = document.getElementById("see-all");
+   let hide = document.getElementById("hide-all")
 
+    see.addEventListener("click", function(event){
+        ideasPage();
+    });
+
+    hide.addEventListener("click", function(event){
+        hideIdeas();
+    });
 }
 
 

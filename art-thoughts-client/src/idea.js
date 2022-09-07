@@ -26,11 +26,4 @@ class Idea {
     }
 
 
-    hideIdeas(){
-    
-        let ideaDiv = document.getElementById("ideas-container")
-
-        ideaDiv.innerHTML = ``
-    }
-
 }
