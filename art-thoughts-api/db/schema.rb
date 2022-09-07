@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_05_084243) do
+ActiveRecord::Schema.define(version: 2022_09_07_101828) do
 
   create_table "contributions", force: :cascade do |t|
     t.integer "idea_id"
     t.string "photo_url"
-    t.string "title"
-    t.date "date"
     t.text "description"
     t.string "medium"
     t.datetime "created_at", precision: 6, null: false

@@ -1,7 +1,9 @@
-//global
+//global---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
     createIdeaForm();
     fetchIdeas();
+    fetchContributions();
+    createContributionForm();
 
 })
 
@@ -77,6 +79,15 @@ function ideaFormSubmission(){
     
 }
 
+function viewIdea(){
+
+    let ideaId = parseInt(event.target.dataset.id)
+    let i = Idea.all.find(i => i.id == ideaId)
+    Idea.hideIdeas;
+    i.renderIdea();
+    
+}
+
 function deleteIdea(){
     let ideaId = parseInt(event.target.dataset.id)
 
@@ -89,17 +100,92 @@ function deleteIdea(){
 
 
 
+
+
 //contribution------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function fetchContributions(){
+    fetch(`${BASE_URL}/contributions`)
+    .then(resp => resp.json())
+    .then(contributions => {
+        for (const contribution of contributions){
+            
+            let c = new Contribution(contribution.id, contribution.idea_id, contribution.photo_url, contribution.description, contribution.medium)
+            c.renderContribution();
+        }
+    })
 }
 
 function createContributionForm(){
+    let contributionForm = document.getElementById("contribution-form")
+
+    contributionForm.innerHTML += 
+    `
+    <form>
+        <label for="idea_name">Which idea are you building on?:</label>
+        <select id="idea_name">
+            <option>Fishy</option>
+            <option>Spookersons</option>
+        </select
+
+        <label for="medium">Medium:</label>
+        <input type="text" id="medium">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description">
+
+        <label for="photo_url">Image URL:</label>
+        <input type="text" id="photo_url">
+        
+        <input type="submit" value="Create Contribution">
+    </form>
+    `
+
+    contributionForm.addEventListener("submit", contributionFormSubmission)
 }
 
 function contributionFormSubmission(){
+    event.preventDefault();
+
+    let idea_name = document.getElementById("idea_name").value
+    let idea_id = Idea.all.find(i => i.title === idea_name).id
+
+    let photo_url = document.getElementById("photo_url").value
+    let description = document.getElementById("description").value
+    let medium = document.getElementById("medium").value
+    
+
+    let contribution = {
+        idea_id: idea_id,
+        photo_url: photo_url,
+        description: description,
+        medium: medium
+    }
+
+    fetch("http://localhost:3000/contributions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(contribution)
+        
+    })
+    .then(resp => resp.json())
+    .then(contribution => {
+        let c = new Contribution(contribution.id, contribution.idea_id, contribution.photo_url, contribution.description, contribution.medium)
+            c.renderContribution();
+    })
+    
 }
 
 function deleteContribution(){
+}
+
+
+//eventListeners
+
+function eventListeners(){
+
 }
 
 

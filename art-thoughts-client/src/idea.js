@@ -20,8 +20,17 @@ class Idea {
         <p>${this.date}</p>
         <p>${this.category}</p>
         <p>${this.thoughts}</p>
+        <!-- <button class="button" data-id=${this.id} onclick="viewIdea()">Detail Page</button> stretch feature to be incorporated later?-->
         <button class="delete-button" data-id=${this.id} onclick="deleteIdea()">Delete Idea</button>
         `
+    }
+
+
+    hideIdeas(){
+    
+        let ideaDiv = document.getElementById("ideas-container")
+
+        ideaDiv.innerHTML = ``
     }
 
 }
