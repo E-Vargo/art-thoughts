@@ -117,7 +117,7 @@ function fetchContributions(){
 
 function createContributionForm(){
     let contributionForm = document.getElementById("contribution-form")
-
+    
     contributionForm.innerHTML += 
     `
     <form>
@@ -179,6 +179,13 @@ function contributionFormSubmission(){
 }
 
 function deleteContribution(){
+    let contributionId = parseInt(event.target.dataset.id)
+
+    fetch(`${BASE_URL}/contributions/${contributionId}`, {
+        method: 'DELETE'
+    })
+
+    this.location.reload()
 }
 
 
