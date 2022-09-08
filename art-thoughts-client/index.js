@@ -157,21 +157,18 @@ function createContributionForm(){
     contributionForm.innerHTML = 
     `
     <form>
-       <!-- <label for="idea_name">Which idea are you building on?:</label>
-        <select id="idea_name">
-            <option>Fishy</option>
-            <option>Spookersons</option>
-        </select>-->
-
-        <label for="medium">Medium:</label>
-        <input type="text" id="medium">
-
-        <label for="description">Description:</label>
-        <input type="text" id="description">
-
-        <label for="photo_url">Image URL:</label>
-        <input type="text" id="photo_url">
-        
+    <div class="mb-3">
+        <label for="medium" class="form-label">Medium:</label>
+        <input type="text" id="medium" class="form-control">
+        </div>
+        <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" id="description" class="form-control">
+        </div>
+        <div class="mb-3">
+        <label for="photo_url" class="form-label">Image URL:</label>
+        <input type="text" id="photo_url" class="form-control">
+        </div>
         <input type="submit" value="Create Contribution">
     </form>
     `

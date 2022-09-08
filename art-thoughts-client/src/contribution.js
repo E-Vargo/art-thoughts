@@ -17,13 +17,13 @@ class Contribution{
         contributionDiv.innerHTML +=
         `
         <div class="card" style="width: 18rem;">
-        <img src="${this.photo_url}" width="150" height="150">
-        
-        <p>${this.description}</p>
-        <p>${this.medium}</p>
+        <img src="${this.photo_url}" class="card-img-top">
+        <div class="card-body">
+        <p class="card-text">${this.description}</p>
+        <p class="card-text">${this.medium}</p>
         
         <button class="btn btn-outline-secondary" data-id=${this.id} onclick="deleteContribution()">Delete Contribution</button>
-        
+        </div>
         
         </div>
         `
