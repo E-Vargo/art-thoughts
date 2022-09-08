@@ -1,4 +1,7 @@
 //global---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+const BASE_URL = "http://localhost:3000"
+
 document.addEventListener("DOMContentLoaded", () => {
  eventListeners();
 })
@@ -27,8 +30,6 @@ function makeHomeButton(){
     let e = document.getElementById("enter-container")
     e.innerHTML = `<button class="btn btn-outline-dark" id="see-all" onclick="ideasPage()">Home</button>`
 }
-
-const BASE_URL = "http://localhost:3000"
 
 //idea---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function fetchIdeas(){
@@ -131,8 +132,14 @@ function viewIdea(){
     hideIdeas();
     makeHomeButton();
     i.renderIdea();
+    hideViewIdeaButton();
     contributionsPage();
     
+}
+
+function hideViewIdeaButton(){
+    let button = document.getElementById("see-idea");
+    button.innerHTML = ``
 }
 
 //contribution------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +176,7 @@ function createContributionForm(){
         <label for="photo_url" class="form-label">Image URL:</label>
         <input type="text" id="photo_url" class="form-control">
         </div>
-        <input type="submit" value="Create Contribution">
+        <input class="btn btn-outline-success" type="submit" value="Create Contribution">
     </form>
     `
 

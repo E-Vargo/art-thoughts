@@ -20,8 +20,15 @@ class Idea {
         <p>${this.date}</p>
         <p>${this.category}</p>
         <p>${this.thoughts}</p>
-        <button  class="btn btn-outline-info" id="hide-all" data-id=${this.id} onclick="viewIdea()">Detail Page</button>
-        <button class="btn btn-outline-secondary" data-id=${this.id} onclick="deleteIdea()">Delete Idea</button>
+        
+        <div class="hstack gap-3">
+            <div id="see-idea">
+                <button  class="btn btn-outline-info"   data-id=${this.id} onclick="viewIdea()">Detail Page</button>
+            </div>
+            <div>
+                <button class="btn btn-outline-secondary" data-id=${this.id} onclick="deleteIdea()">Delete Idea</button>
+            </div>
+        </div
         `
     }
 
