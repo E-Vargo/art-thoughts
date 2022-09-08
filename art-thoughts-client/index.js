@@ -85,15 +85,6 @@ function ideaFormSubmission(){
     
 }
 
-function viewIdea(){
-    //debugger;
-    let ideaId = parseInt(event.target.dataset.id)
-    let i = Idea.all.find(i => i.id == ideaId)
-    hideIdeas();
-    i.renderIdea();
-    
-}
-
 function deleteIdea(){
     let ideaId = parseInt(event.target.dataset.id)
 
@@ -104,6 +95,7 @@ function deleteIdea(){
     this.location.reload()
 }
 
+//view logic
 function hideIdeas(){
     
     let ideaDiv = document.getElementById("ideas-container")
@@ -113,15 +105,27 @@ function hideIdeas(){
     ideaForm.innerHTML = ``
 }
 
+function viewIdea(){
+    let ideaId = parseInt(event.target.dataset.id)
+    let i = Idea.all.find(i => i.id == ideaId)
+    hideIdeas();
+    i.renderIdea();
+    contributionsPage();
+    
+}
+
 //contribution------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function fetchContributions(){
     fetch(`${BASE_URL}/contributions`)
     .then(resp => resp.json())
     .then(contributions => {
+            let ideaName = document.getElementById("idea-name");
+            let idea = Idea.all.find(i => i.title === ideaName);
         for (const contribution of contributions){
-            
+             if (contribution.idea_id === idea.id) {
             let c = new Contribution(contribution.id, contribution.idea_id, contribution.photo_url, contribution.description, contribution.medium)
             c.renderContribution();
+             }
         }
     })
 }
@@ -129,14 +133,14 @@ function fetchContributions(){
 function createContributionForm(){
     let contributionForm = document.getElementById("contribution-form")
 
-    contributionForm.innerHTML += 
+    contributionForm.innerHTML = 
     `
     <form>
-        <label for="idea_name">Which idea are you building on?:</label>
+       <!-- <label for="idea_name">Which idea are you building on?:</label>
         <select id="idea_name">
             <option>Fishy</option>
             <option>Spookersons</option>
-        </select
+        </select>-->
 
         <label for="medium">Medium:</label>
         <input type="text" id="medium">
@@ -157,7 +161,7 @@ function createContributionForm(){
 function contributionFormSubmission(){
     event.preventDefault();
 
-    let idea_name = document.getElementById("idea_name").value
+    let idea_name = document.getElementById("idea-name").value
     let idea_id = Idea.all.find(i => i.title === idea_name).id
 
     let photo_url = document.getElementById("photo_url").value
@@ -204,7 +208,7 @@ function deleteContribution(){
 
 function eventListeners(){
    let see = document.getElementById("see-all");
-   let hide = document.getElementById("hide-all");
+   //let hide = document.getElementById("hide-all");
 
     see.addEventListener("click", function(event){
         ideasPage();

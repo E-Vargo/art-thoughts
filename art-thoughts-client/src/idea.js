@@ -16,7 +16,7 @@ class Idea {
 
         ideaDiv.innerHTML +=
         `
-        <h1>${this.title}</h1
+        <h1 id="idea-name">${this.title}</h1
         <p>${this.date}</p>
         <p>${this.category}</p>
         <p>${this.thoughts}</p>
