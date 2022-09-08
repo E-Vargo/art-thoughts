@@ -7,8 +7,9 @@ function ideasPage(){
     hideEnter();
     hideIdeas();
     hideContributions();
-    createIdeaForm();
     fetchIdeas();
+    createIdeaForm();
+    
 }
 
 function contributionsPage(){
@@ -20,6 +21,11 @@ function contributionsPage(){
 function hideEnter(){
     let e = document.getElementById("enter-container")
     e.innerHTML = ``
+}
+
+function makeHomeButton(){
+    let e = document.getElementById("enter-container")
+    e.innerHTML = `<button id="see-all" onclick="ideasPage()">Home</button>`
 }
 
 const BASE_URL = "http://localhost:3000"
@@ -101,7 +107,7 @@ function deleteIdea(){
         method: 'DELETE'
     })
 
-    this.location.reload()
+    ideasPage();
 }
 
 //view logic
@@ -118,6 +124,7 @@ function viewIdea(){
     let ideaId = parseInt(event.target.dataset.id)
     let i = Idea.all.find(i => i.id == ideaId)
     hideIdeas();
+    makeHomeButton();
     i.renderIdea();
     contributionsPage();
     
@@ -209,7 +216,8 @@ function deleteContribution(){
         method: 'DELETE'
     })
 
-    this.location.reload()
+    
+    contributionsPage();
 }
 
 //view logic 
