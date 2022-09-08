@@ -31,7 +31,7 @@ function fetchIdeas(){
 function createIdeaForm(){
     let ideaForm = document.getElementById("idea-form")
 
-    ideaForm.innerHTML += 
+    ideaForm.innerHTML = 
     `
     <form>
         <label for="title">Title:</label>
@@ -86,10 +86,10 @@ function ideaFormSubmission(){
 }
 
 function viewIdea(){
-
+    //debugger;
     let ideaId = parseInt(event.target.dataset.id)
     let i = Idea.all.find(i => i.id == ideaId)
-    Idea.hideIdeas;
+    hideIdeas();
     i.renderIdea();
     
 }
@@ -204,15 +204,16 @@ function deleteContribution(){
 
 function eventListeners(){
    let see = document.getElementById("see-all");
-   let hide = document.getElementById("hide-all")
+   let hide = document.getElementById("hide-all");
 
     see.addEventListener("click", function(event){
         ideasPage();
     });
 
-    hide.addEventListener("click", function(event){
-        hideIdeas();
-    });
+   // hide.addEventListener("click", function(event){
+    //    hideIdeas();
+    //    viewIdea();
+   // });
 }
 
 
