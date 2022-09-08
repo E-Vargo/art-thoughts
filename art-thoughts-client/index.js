@@ -25,7 +25,7 @@ function hideEnter(){
 
 function makeHomeButton(){
     let e = document.getElementById("enter-container")
-    e.innerHTML = `<button id="see-all" onclick="ideasPage()">Home</button>`
+    e.innerHTML = `<button class="btn btn-outline-dark" id="see-all" onclick="ideasPage()">Home</button>`
 }
 
 const BASE_URL = "http://localhost:3000"
@@ -49,19 +49,24 @@ function createIdeaForm(){
     ideaForm.innerHTML = 
     `
     <form>
-        <label for="title">Title:</label>
-        <input type="text" id="title">
-
-        <label for="date">Date:</label>
-        <input type="date" id="date">
-
-        <label for="category">Category:</label>
-        <input type="text" id="category">
-
-        <label for="thoughts">Thoughts:</label>
-        <input type="text" id="thoughts">
-        
-        <input type="submit" value="Create Idea">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input class="form-control" type="text" id="title">
+        </div>
+        <div class="mb-3">
+        <label for="date" class="form-label">Date:</label>
+        <input class="form-control" type="date" id="date">
+        </div>
+        <div class="mb-3">
+        <label for="category" class="form-label">Category:</label>
+        <input class="form-control" type="text" id="category">
+        </div>
+        <div class="mb-3">
+        <label for="thoughts" class="form-label">Thoughts:</label>
+        <input class="form-control" type="text" id="thoughts">
+        </div>
+        <input class="btn btn-outline-success" type="submit" value="Create Idea">
+       
     </form>
     `
 
