@@ -4,13 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function ideasPage(){
+    hideEnter();
+    hideIdeas();
+    hideContributions();
     createIdeaForm();
     fetchIdeas();
 }
 
 function contributionsPage(){
+    hideContributions();
     fetchContributions();
     createContributionForm();
+}
+
+function hideEnter(){
+    let e = document.getElementById("enter-container")
+    e.innerHTML = ``
 }
 
 const BASE_URL = "http://localhost:3000"
@@ -201,6 +210,17 @@ function deleteContribution(){
     })
 
     this.location.reload()
+}
+
+//view logic 
+
+function hideContributions(){
+    
+    let contributionDiv = document.getElementById("contributions-container")
+    let contributionForm = document.getElementById("contribution-form")
+
+    contributionDiv.innerHTML = ``
+    contributionForm.innerHTML = ``
 }
 
 
