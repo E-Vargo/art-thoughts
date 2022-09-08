@@ -119,7 +119,7 @@ function fetchContributions(){
     fetch(`${BASE_URL}/contributions`)
     .then(resp => resp.json())
     .then(contributions => {
-            let ideaName = document.getElementById("idea-name");
+            let ideaName = document.getElementById("idea-name").innerHTML;
             let idea = Idea.all.find(i => i.title === ideaName);
         for (const contribution of contributions){
              if (contribution.idea_id === idea.id) {
@@ -161,7 +161,7 @@ function createContributionForm(){
 function contributionFormSubmission(){
     event.preventDefault();
 
-    let idea_name = document.getElementById("idea-name").value
+    let idea_name = document.getElementById("idea-name").innerHTML
     let idea_id = Idea.all.find(i => i.title === idea_name).id
 
     let photo_url = document.getElementById("photo_url").value
