@@ -1,7 +1,7 @@
 # README
 
 # ArtThoughts
-
+This is a very bare bones pinterest-like application meant for cataloging artistic ideas and contributing thoughts to those ideas.
 
 
 ## Installation
